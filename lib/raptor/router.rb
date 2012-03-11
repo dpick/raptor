@@ -15,7 +15,8 @@ module Raptor
       Raptor.log "App: routing #{request.request_method} #{request.path_info}"
       injector = Injector.for_app(@app).
         add_request(request)
-      injector = Injector.new.add_request(request)
+      injector = injector.add_request(request)
+
       begin
         route = route_for_request(injector, request)
       rescue NoRouteMatches
